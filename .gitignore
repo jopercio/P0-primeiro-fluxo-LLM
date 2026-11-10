@@ -1,0 +1,13 @@
+# Ambiente virtual
+.venv/
+venv/
+
+# Credenciais
+.env
+
+# Cache Python
+__pycache__/
+*.py[cod]
+
+# Configurações locais
+.vscode/
