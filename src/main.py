@@ -11,16 +11,24 @@ with open('prompt.md') as prompt_file:
 # inicializa o cliente
 client = genai.Client()
 
-# dados de entrada (exemplo)
-input_usuario="Faz duas semanas que pedi minhas férias e ainda não tive retorno. Preciso me organizar porque quero viajar no próximo mês."
+# dados de entrada
+usuario=input("Digite sua solicitação: ").strip()
 
-mensagem = f"{prompt}{input_usuario}"
+if not usuario:
+    print("Solicitação inválida. Tente novamente.")
+else:
+    mensagem = f"""
+    {prompt}
 
-# chamar o LLM
-response = client.models.generate_content(
-    model="gemini-3.5-flash-lite",
-    contents=mensagem,
-)
+    Solicitação do usuário:
+    {usuario}
+    """
 
-# exibir resposta
-print(response.text)
+    # chamar o LLM
+    response = client.models.generate_content(
+        model="gemini-3.5-flash-lite",
+        contents=mensagem,
+    )
+
+    # exibir resposta
+    print(response.text)

@@ -18,6 +18,9 @@ Analise a mensagem recebida e identifique:
    - Outros
 3. **Descrição:** resumo claro do que foi solicitado ou relatado.
 4. **Prioridade:** classifique como Baixa, Média ou Alta, considerando a urgência e o impacto descritos na mensagem.
+  - Baixa: solicitação sem urgência aparente e sem impacto  significativo nas atividades.
+  - Média: solicitação que exige atenção, mas não apresenta impacto imediato ou crítico.
+  - Alta: solicitação urgente ou que apresente impacto significativo na continuidade das atividades.
 5. **Setor responsável:** indique a área que provavelmente deverá receber a solicitação, considerando seu conteúdo.
 6. **Informações adicionais:** destaque detalhes relevantes, como prazos, locais, pessoas envolvidas ou recursos mencionados. Caso não existam informações adicionais relevantes, retorne null.
 
@@ -30,6 +33,8 @@ Analise a mensagem recebida e identifique:
 - Se não houver informações suficientes para determinar uma categoria ou setor, utilize "Outros" e indique a necessidade de esclarecimento nas informações adicionais.
 - A prioridade deve refletir o impacto e a urgência descritos, não a maneira como a mensagem foi escrita.
 - Não confunda o setor que solicita algo com o setor responsável por resolver a demanda.
+- Caso não seja possível identificar uma informação, não invente um valor.
+- Para campos textuais sem informação suficiente, utilize null, exceto categoria e setor responsável, que devem seguir as regras específicas de classificação.
 - Preserve o significado original da solicitação.
 
 ### Formato da resposta
@@ -46,7 +51,3 @@ Utilize exatamente esta estrutura:
   "setor_responsavel": "Setor responsável",
   "informacoes_adicionais": null
 }
-
-### Mensagem recebida:
-
-{mensagem}
